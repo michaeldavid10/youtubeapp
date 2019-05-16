@@ -11,6 +11,7 @@ declare var $: any;
 export class AppComponent implements OnInit {
 
   videos: any[] = [];
+  currentVideo: any;
 
   constructor( public _yts: YoutubeService ) {
     this._yts.getVideos()
@@ -22,5 +23,10 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     $(document).foundation();
+  }
+
+  showVideo(video: any) {
+    this.currentVideo = video;
+    $('#exampleModal1').foundation('open');
   }
 }

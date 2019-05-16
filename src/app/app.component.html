@@ -2,4 +2,29 @@
 
 <div class="grid-container main-container">
   <h1>Videos de YouTube</h1>
+  <hr>
+
+  <div class="card-columns">
+    <div class="card" *ngFor="let video of videos">
+      <img [src]="video.thumbnails.high.url" [alt]="video.title">
+      <div class="card-section">
+        <h5>{{ video.title }}</h5>
+        <button (click)="showVideo(video)" type="button" class="hollow button expanded">Ver video</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+<div class="reveal" id="exampleModal1" data-reveal>
+  <div *ngIf="currentVideo">
+    <h5>{{ currentVideo.title }}</h5>
+    <!--<button class="close-button" data-close aria-label="Close modal" type="button">
+      <span aria-hidden="true">&times;</span>
+    </button>-->
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ currentVideo.resourceId.videoId }}" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <button class="button" data-close aria-label="Close modal" type="button">Cerrar</button>
+  </div>
 </div>

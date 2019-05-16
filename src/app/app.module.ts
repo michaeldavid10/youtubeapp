@@ -4,11 +4,13 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import {HttpClientModule} from '@angular/common/http';
+import { VideoYoutubePipe } from './pipes/video-youtube.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent
+    NavbarComponent,
+    VideoYoutubePipe
   ],
   imports: [
     BrowserModule,
