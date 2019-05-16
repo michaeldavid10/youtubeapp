@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {YoutubeService} from './services/youtube.service';
 
 declare var $: any;
 
@@ -8,7 +9,16 @@ declare var $: any;
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'youtubeapp';
+
+  videos: any[] = [];
+
+  constructor( public _yts: YoutubeService ) {
+    this._yts.getVideos()
+      .subscribe(videos => {
+        console.log(videos);
+        this.videos = videos;
+      });
+  }
 
   ngOnInit() {
     $(document).foundation();
