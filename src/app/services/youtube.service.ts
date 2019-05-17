@@ -24,6 +24,10 @@ export class YoutubeService {
       .set('playlistId', this.playlist)
       .set('key', this.apiKey);
 
+    if (this.nextPageToken) {
+      params = params.set('pageToken', this.nextPageToken);
+    }
+
     return this.http.get(url, { params })
       .pipe(map(res => {
         console.log(res);

@@ -16,7 +16,6 @@ export class AppComponent implements OnInit {
   constructor( public _yts: YoutubeService ) {
     this._yts.getVideos()
       .subscribe(videos => {
-        console.log(videos);
         this.videos = videos;
       });
   }
@@ -28,5 +27,17 @@ export class AppComponent implements OnInit {
   showVideo(video: any) {
     this.currentVideo = video;
     $('#exampleModal1').foundation('open');
+  }
+
+  closeVideo() {
+    this.currentVideo = null;
+    $('#exampleModal1').foundation('close');
+  }
+
+  loadMore() {
+    this._yts.getVideos()
+      .subscribe(videos => {
+        this.videos.push.apply(this.videos, videos);
+      });
   }
 }
