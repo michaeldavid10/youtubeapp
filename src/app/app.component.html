@@ -14,7 +14,7 @@
     </div>
   </div>
 
-  <button (click)="loadMore()" type="button" class="hollow button expanded">Cargar más videos</button>
+  <button (click)="loadMore()" type="button" class="hollow button expanded more">Cargar más videos</button>
 </div>
 
 
@@ -25,7 +25,9 @@
     <!--<button class="close-button" data-close aria-label="Close modal" type="button">
       <span aria-hidden="true">&times;</span>
     </button>-->
-    <iframe width="560" height="315" [src]="currentVideo.resourceId.videoId | videoYoutube" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <div class="responsive-embed">
+      <iframe [src]="currentVideo.resourceId.videoId | videoYoutube" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
     <button (click)="closeVideo()" class="button" type="button">Cerrar</button>
   </div>
 </div>
